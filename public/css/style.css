@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /** {
   margin: 0;
   padding: 0;
@@ -18,3 +14,57 @@ footer {
   background-color: darkslategray;
 }
 */
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px; /* Height of the footer */
+  background: #a9a9a9;
+  color: white;
+  border: 1px solid;
+}
+
+.k-grid-toolbar {
+  background: white;
+}
+
+.category-label {
+  vertical-align: middle;
+  padding-right: 0.5em;
+}
+
+.k-grouping-header {
+  background-color: #6495ed;
+  color: #f0f8ff;
+}
+
+.k-header {
+  background-color: #6495ed;
+  color: #f0f8ff;
+}
+
+th,
+col,
+colgroup {
+  color: #f0f8ff;
+}
+
+.k-sorted {
+  color: #f0f8ff;
+}
+.k-filterable {
+  color: #f0f8ff;
+}
+
+.k-pager-wrap {
+  background-color: #6495ed;
+}
+
+.w3-bar-item:hover {
+  background-color: #6495ed;
+}
+
+.w3-button:hover {
+  background-color: #6495ed;
+}

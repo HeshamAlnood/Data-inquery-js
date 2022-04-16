@@ -151,6 +151,7 @@ query.forEach((e) => {
             //  rowTemplate: kendo.template($("#template").html()),
             height: 1170,
             width: 2400,
+
             groupable: true,
             sortable: true,
             reorderable: true,

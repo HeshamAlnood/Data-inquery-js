@@ -3,12 +3,13 @@
 
    
 <body>
- {{>header}}
+  {{>header}}
 
-{{>main}}
+
 {{>cards}}
- 
- <div class="container" style="padding-top:1px;padding-left:0 ;height=5%;float:left;width:100%;" id="show_aside_artcile">
+{{>main}} 
+
+ <div class="container" style="padding-top:1px;padding-left:0 ;height=5%;float:left;width:100%;display:none" id="show_aside_artcile">
    
 {{>aside}}  
    
@@ -43,7 +44,10 @@
       
 
 
+
+ 
   
     </body>
+    {{>footer}}
       
 </html>
