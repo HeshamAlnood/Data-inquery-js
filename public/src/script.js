@@ -2,6 +2,7 @@ let vAsideArctile = document.getElementById("show_aside_artcile");
 let vCards = document.getElementById("cards");
 let vMain = document.getElementById("main");
 
+let BreadcrumbArr = [];
 //vAsideArctile.style.display = "none";
 let elmArray = [vAsideArctile, vCards, vMain];
 console.log(vMain);
@@ -12,11 +13,7 @@ console.log(elmArray);
 function showHide(arrayElm = [], p_elm) {
   arrayElm.forEach((e) => {
     console.log(e);
-    e.id === p_elm
-      ? /*? (e.style.visibility = "visible")
-      : (e.style.visibility = "hidden");*/
-        (e.style.display = "flex")
-      : (e.style.display = "none");
+    e.id === p_elm ? (e.style.display = "flex") : (e.style.display = "none");
   });
 }
 showHide(elmArray, "main");
@@ -24,12 +21,75 @@ showHide(elmArray, "main");
 const chkLogin = function (user, pass) {
   return `true`;
 };
+let brdElm;
+/***   Change Breadcrumb ***/
+const chngBreadcrumb = function () {
+  let brd = document.querySelector("#breadcrumbId");
+  let brdChild = brd.getElementsByClassName("breadcrumb-item");
 
+  let childsBrd = brd.querySelectorAll(".li");
+
+  console.log(`brd`);
+  console.log(brd);
+  console.log(brd.hasChildNodes());
+  while (brd.hasChildNodes()) {
+    brd.removeChild(brd.firstChild);
+  }
+  /*childsBrd.forEach((e) => {
+    console.log(`remove e`);
+    console.log(e);
+    e.remove();
+  });*/
+
+  console.log(`print after removing`);
+
+  console.log(brd);
+  //brd.remove();
+
+  let brdClass = 'class="breadcrumb-item active" aria-current=page';
+  console.log("Array");
+  console.log(BreadcrumbArr);
+  console.log(BreadcrumbArr.length);
+  console.log(`brd`);
+  console.log(brd);
+  /*console.log(brdChild);
+  console.log(brd.getElementsByTagName("li"));*/
+  console.log(childsBrd);
+
+  let arr = [...new Set(BreadcrumbArr)];
+  brdElm = "";
+  if (arr.length === 1) {
+    brdElm = `<li href=#' ${brdClass}>${arr[0]}</li>`;
+    console.log("lengh =1");
+  } else {
+    console.log("else");
+    arr.forEach((e, i) => {
+      brdClass =
+        arr[i] === e
+          ? 'class="breadcrumb-item active" aria-current=page'
+          : 'class="breadcrumb-item" ';
+      //brdCls.classList.remove("active");
+      brdElm =
+        brdElm === undefined
+          ? ""
+          : brdElm + `<li href=#' ${brdClass}>${e}</li>`;
+      console.log("forEach");
+      console.log(brdElm);
+    });
+  }
+
+  /*console.log(`brdElm`);
+  console.log(brdElm);*/
+  brd.insertAdjacentHTML("beforeend", brdElm);
+};
+//};
+/*** END  Change Breadcrumb ***/
 let vButton = document.querySelector("#loginButton");
 console.log(`vButton`);
 console.log(vButton);
 
-vButton.addEventListener("click", () => {
+vButton.addEventListener("click", (e) => {
+  e.preventDefault();
   let vInputUser = document.getElementById("floatingInput").value;
   let vPassword = document.getElementById("floatingPassword").value;
   /*console.log(vInputUser);
@@ -49,11 +109,12 @@ vButton.addEventListener("click", () => {
   }
 
   if (chkLogin(vInputUser, vPassword) === "true") {
-    //alert("Succeful Login");
-    const alrt = async function () {
-      await Swal.fire("Succeful Login");
-    };
-    alrt().then(showHide(elmArray, "cards"));
+    Swal.fire("Succeful Login");
+    showHide(elmArray, "cards");
+    BreadcrumbArr.push("Home");
+    chngBreadcrumb();
+
+    //alrt().then(showHide(elmArray, "cards"));
   } else {
     Swal.fire({
       icon: "error",
@@ -75,9 +136,40 @@ console.log(
 let vCardBuutons = document.getElementById("cards").querySelectorAll(".btn");
 
 vCardBuutons.forEach((e) => {
-  e.addEventListener("click", () => showHide(elmArray, "show_aside_artcile"));
+  e.addEventListener("click", (eb) => {
+    eb.preventDefault();
+    let pageName = document
+      .getElementById("cards")
+      .querySelectorAll("h5").value;
+    console.log(`pageName`);
+    console.log(pageName);
+    showHide(elmArray, "show_aside_artcile");
+    let brdVal = e.previousElementSibling.previousElementSibling.textContent;
+    BreadcrumbArr.push(brdVal);
+    chngBreadcrumb();
+  });
+  let vnam = e.previousElementSibling.previousElementSibling.textContent;
+
+  console.log(`vnam`);
+  console.log(vnam);
+
+  /*console.log(`e`);
+  console.log(e);*/
+  //chngBreadcrumb(vnam);
 });
 
 const cardAction = function () {
   return 0;
 };
+
+var vPassword = document.getElementById("floatingPassword");
+
+vPassword.addEventListener("keyup", function (event) {
+  var text = document.getElementById("text_caps");
+  text.style.opacity = "0";
+  if (event.getModifierState("CapsLock")) {
+    text.style.opacity = "1";
+  } else {
+    text.style.opacity = "0";
+  }
+});

@@ -4521,13 +4521,13 @@ fieldset:disabled .btn {
 }
 
 .card:hover {
-  //flex: 1 1 auto;
-  //padding: 1rem 1rem;
-  //transition:   border-color: blue ;
-  border: 0.5px solid blue;
+  border: 0.5px solid;
   transition: all 0.3s;
   font-size: 16px;
-  box-shadow: 1px 1px 1px;
+  /*box-shadow: 1px 1px 1px;*/
+  box-shadow: 2px 4px 8px #585858;
+  transform: scale(1.1);
+  /*height: 200%;*/
 }
 
 .card-title {
@@ -4541,6 +4541,10 @@ fieldset:disabled .btn {
 
 .card-text:last-child {
   margin-bottom: 0;
+}
+
+.card p:hover {
+  color: blue;
 }
 
 .card-link:hover {
@@ -4777,6 +4781,14 @@ fieldset:disabled .btn {
 }
 .breadcrumb-item.active {
   color: #6c757d;
+}
+
+.breadcrumb li:first-child:after {
+  border-left-color: /*#fdf9cc;*/ #42b3f5;
+}
+.breadcrumb li:last-child:after {
+  /*border-left-color: #fddc05;*/
+  border-left-color: #4287f5;
 }
 
 .pagination {

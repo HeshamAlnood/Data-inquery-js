@@ -1,6 +1,19 @@
 const express = require("express");
 
 const app = express();
+/* For GraphQl */
+/*const graphqlHttp = require("express-graphql");
+const { schema: vSchema } = require("../src/ghrapql.js");
+
+app.use(
+  "/ghraphql",
+  graphqlHttp({
+    schema: vSchema,
+    graphiql: true,
+  })
+);
+/* For GraphQl */
+
 const hbs = require("hbs");
 
 //const { runSql, getQuery } = require("./querys");

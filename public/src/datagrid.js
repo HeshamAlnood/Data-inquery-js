@@ -3,18 +3,26 @@ let vlink;
 let columnsP = [];
 let dataV;
 let fieldSchema = {};
+
 const createTable = async function (data) {
   const createSearchAndCols = function (data) {
     let obC = {};
     let keys = Object.keys(data[1]);
     console.log(keys);
     keys.forEach((e) => {
-      console.log(e.toLocaleUpperCase().includes("DATE") ? e : "not date");
+      console.log(e.toLocaleUpperCase().replaceAll("_", " "));
       obC = {
         field: e.toLocaleUpperCase(),
         //format: e.toLocaleUpperCase().includes("DATE") ? "{0:DD/MM/YYYY}" : "",
-        title: e.toLocaleUpperCase(),
+        type: e.toLocaleUpperCase().includes("DATE") ? "number" : "string",
+        title: e.toLocaleUpperCase().replaceAll("_", " "),
         width: `150px`,
+
+        attributes: {
+          class: "row-style",
+        },
+        headerAttributes: { class: "label-color" },
+
         filterable: {
           /*cell: {
             showOperators: false,
@@ -44,17 +52,11 @@ const createTable = async function (data) {
           search: true,
 
           //extra: false,
-          messages: {
-            and: "and",
-            or: "or",
-            filter: "Apply filter",
-            clear: "Clear filter",
-          },
         },
       };
 
-      fieldSchema[`${e}`] = {
-        type: e.toLocaleUpperCase().includes("DATE") ? `number` : `string`,
+      fieldSchema[`"${e}"`] = {
+        type: e.toLocaleUpperCase().includes("DATE") ? "number" : "string",
         operators: {
           number: {
             gte: "Greater or equal to",
@@ -89,7 +91,16 @@ query.forEach((e) => {
     //element.replaceChildren();
     element.remove();
 
-    vArctile.insertAdjacentHTML("afterbegin", `<div id="grid"></div>`);
+    vArctile.insertAdjacentHTML(
+      "afterbegin",
+      `<div id="grid">
+      <div id="loading-parent" class="d-flex justify-content-center" >
+  <div id="loading" class="spinner-border text-primary" style="width:60px;height:60px;margin-top:400px;margin-left:800px;" role="status">
+    <span class="visually-hidden" >Loading...</span>
+  </div>
+</div>
+      </div>`
+    );
 
     /*});
 });*/
@@ -106,7 +117,10 @@ query.forEach((e) => {
     })
       .then((resp) => resp.json()) // return prmoise again
       .then((data) => {
-        console.log(`data`);
+        document.getElementById("loading").style.opacity = "1";
+        document.getElementById("grid").style.opacity = "0";
+
+        //console.log(`data`);
         //console.log(dataV);
         dataV = data;
         //console.log(data);
@@ -150,7 +164,7 @@ query.forEach((e) => {
             /* end try schema */
             //  rowTemplate: kendo.template($("#template").html()),
             height: 1170,
-            width: 2400,
+            width: "200%",
 
             groupable: true,
             sortable: true,
@@ -160,14 +174,14 @@ query.forEach((e) => {
 
             //selectable: "multiple cell",
             //allowCopy: true,
-            toolbar: ["excel"],
+            toolbar: ["excel", "pdf", "search"],
             excel: {
               fileName: "Kendo UI Grid Export.xlsx",
               proxyURL: "https://demos.telerik.com/kendo-ui/service/export",
               filterable: true,
             },
             filterable: {
-              mode: "menu",
+              mode: "row",
               //ui: "datePicker",
             },
             pageable: {
@@ -178,16 +192,9 @@ query.forEach((e) => {
             columns: columnsP,
           });
         });
-
-        // Change the name of the first dataItem.
-
-        // Call refresh in order to see the change.
-        /*var grid = $("#grid").data("kendoGrid");
-        console.log(`grid`);
-        console.log(grid);*/
-        //grid.setDataSource({ data: dataV, pageSize: 100 });
-
-        //grid.refresh();
+        document.getElementById("loading").style.opacity = "0";
+        document.getElementById("grid").style.opacity = "1";
+        document.getElementById("loading-parent").remove();
       })
       .catch((err) => console.log(err));
   });
