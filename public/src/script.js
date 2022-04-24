@@ -29,9 +29,9 @@ const chngBreadcrumb = function () {
 
   let childsBrd = brd.querySelectorAll(".li");
 
-  console.log(`brd`);
+  /*console.log(`brd`);
   console.log(brd);
-  console.log(brd.hasChildNodes());
+  console.log(brd.hasChildNodes());*/
   while (brd.hasChildNodes()) {
     brd.removeChild(brd.firstChild);
   }
@@ -41,17 +41,17 @@ const chngBreadcrumb = function () {
     e.remove();
   });*/
 
-  console.log(`print after removing`);
+  /*console.log(`print after removing`);
 
-  console.log(brd);
+  console.log(brd);*/
   //brd.remove();
 
   let brdClass = 'class="breadcrumb-item active" aria-current=page';
-  console.log("Array");
+  /*console.log("Array");
   console.log(BreadcrumbArr);
   console.log(BreadcrumbArr.length);
   console.log(`brd`);
-  console.log(brd);
+  console.log(brd);*/
   /*console.log(brdChild);
   console.log(brd.getElementsByTagName("li"));*/
   console.log(childsBrd);
@@ -73,17 +73,43 @@ const chngBreadcrumb = function () {
         brdElm === undefined
           ? ""
           : brdElm + `<li href=#' ${brdClass}>${e}</li>`;
-      console.log("forEach");
-      console.log(brdElm);
+      /*console.log("forEach");
+      console.log(brdElm);*/
     });
   }
 
   /*console.log(`brdElm`);
   console.log(brdElm);*/
   brd.insertAdjacentHTML("beforeend", brdElm);
+  navBreadcrumb();
 };
 //};
 /*** END  Change Breadcrumb ***/
+
+/* Navigate Breadcrumb **/
+
+const navBreadcrumb = function (nav = "n") {
+  let brd = document.querySelector("#breadcrumbId");
+  let childsBrd = brd.querySelectorAll("li");
+  console.log(`navBreadcrumb childsBrd`);
+  console.log(childsBrd);
+  childsBrd.forEach((el) => {
+    console.log(`el`);
+    console.log(el);
+    el.addEventListener("click", (e) => {
+      console.log("on click");
+      console.log(e.value);
+      e.preventDefault();
+      if (e.value === "Home") {
+        showHide(elmArray, "cards");
+        BreadcrumbArr.pop();
+      }
+    });
+  });
+};
+
+/*** END  Navigate Breadcrumb ***/
+
 let vButton = document.querySelector("#loginButton");
 console.log(`vButton`);
 console.log(vButton);
@@ -109,7 +135,25 @@ vButton.addEventListener("click", (e) => {
   }
 
   if (chkLogin(vInputUser, vPassword) === "true") {
-    Swal.fire("Succeful Login");
+    //Swal.fire("Succeful Login");
+    let vAlert = document.getElementById("login-alert");
+    console.log(vAlert);
+    //vAlert.style.display = "flex";
+    //vAlert.classlist.add("login-alert.is-show");
+    vAlert.classList.remove("login-alert");
+    vAlert.classList.add("is-show");
+
+    console.log(vAlert);
+    setTimeout(() => {
+      let vAlertBtn = document.getElementById("alertSuccessBtn");
+      let vAlert = document.getElementById("login-alert");
+
+      console.log(vAlertBtn);
+      console.log(vAlert);
+      vAlert.classList.add("login-alert");
+      vAlert.classList.remove("is-show");
+      //vAlertBtn.click();
+    }, 2000);
     showHide(elmArray, "cards");
     BreadcrumbArr.push("Home");
     chngBreadcrumb();
@@ -147,6 +191,7 @@ vCardBuutons.forEach((e) => {
     let brdVal = e.previousElementSibling.previousElementSibling.textContent;
     BreadcrumbArr.push(brdVal);
     chngBreadcrumb();
+    //nabBreadcrumb();
   });
   let vnam = e.previousElementSibling.previousElementSibling.textContent;
 

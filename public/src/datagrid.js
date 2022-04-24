@@ -163,7 +163,7 @@ query.forEach((e) => {
 
             /* end try schema */
             //  rowTemplate: kendo.template($("#template").html()),
-            height: 1170,
+            height: 1100,
             width: "200%",
 
             groupable: true,

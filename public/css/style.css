@@ -1,3 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  height: 90vh;
+  /*padding: 2rem;*/
+}
+
+html {
+  font-size: 100%;
+  /*box-sizing: border-box;*/
+}
 /** {
   margin: 0;
   padding: 0;
@@ -107,6 +122,7 @@ colgroup {
 
   color: aliceblue;
   position: relative;
+  cursor: pointer;
 }
 .breadcrumb li:first-child {
   background: #42b3f5;
@@ -150,4 +166,18 @@ colgroup {
   .breadcrumb li {
     padding: 8px 15px 8px 30px;
   }
+}
+.login-alert {
+  position: absolute;
+
+  transform: scaleY(0);
+  transition: transform 400ms ease 0ms;
+}
+
+.is-show {
+  //display: flex;
+  position: absolute;
+
+  transform: scaleY(1);
+  transition: transform 400ms ease 0ms;
 }

@@ -1,24 +1,34 @@
-<html>
+<html >
     {{>head}}
 
    
-<body>
+<body >
+ 
+
+<div class="position-relative" style=" padding-bottom: 600px;">
   {{>header}}
 {{>breadcrumb}}
 
-
-{{>cards}}
 {{>main}} 
- <div class="container" style="padding-top:50px;padding-left:0 ;height=5%;float:left;width:100%;display:none" id="show_aside_artcile">
+{{>cards}}
+
+ <div class="position-absolute" style="padding-top:20px;padding-left:0 ;float:left;width:100%;display:none;height: 100%;" id="show_aside_artcile">
    
 {{>aside}}  
    
   
 {{>article}}
- 
- </div>
+
 
  
+ </div>
+<div id="login-alert" class="login-alert"  style="margin-top:23%">
+      <div class="alert alert-success" role="alert" style="width: 600px;">
+        Succeful Login !
+       </div>
+    </div>
+     </div>
+
 
 
       <script defer src="/src/jquery.min.js"></script>
@@ -45,9 +55,11 @@
 
 
 
- 
+   
+     
+        {{>footer}}
   
     </body>
-    {{>footer}}
+
       
 </html>
