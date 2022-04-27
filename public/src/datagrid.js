@@ -24,34 +24,9 @@ const createTable = async function (data) {
         headerAttributes: { class: "label-color" },
 
         filterable: {
-          /*cell: {
-            showOperators: false,
-          },*/ mode: "row",
-          //"datepicker",
-          /*ui: function (element) {
-            element.kendoDatePicker({
-              format: "DD/MM/YYYY",
-              //culture: "ar-SY",
-              //parseFormats: ["MMMM yyyy", "dd/MM/YYYY"],
-              dateInput: true,
-              //parseFormats: ["MMMM yyyy"], //format also will be added to parseFormats
-              change: function () {
-                console.log(this.value());
-                console.log(kendo.toString(new Date(this.value()), "d"));
-                //kendo.toString(new Date(this.value()), "d");
-              },
-            });
-
-            console.log(`element`);
-            console.log(element);
-
-            var datetimepicker = $(element).data("kendoDatePicker");
-            console.log(datetimepicker.options);
-          },*/
+          mode: "row",
 
           search: true,
-
-          //extra: false,
         },
       };
 
@@ -131,23 +106,6 @@ query.forEach((e) => {
         //console.log(dataV);
 
         $(document).ready(function () {
-          /* datePicker */
-
-          /* $("#datepicker").kendoDatePicker({
-            dateInput: true,
-          });
-
-          var datetimepicker = $("#datepicker").data("kendoDatePicker");
-          datetimepicker._dateInput.setOptions({
-            messages: {
-              year: "yyyy",
-              month: "mm",
-              day: "dd",
-            },
-          });
-
-          /* end datePicker*/
-
           $("#grid").kendoGrid({
             dataSource: {
               data: dataV,

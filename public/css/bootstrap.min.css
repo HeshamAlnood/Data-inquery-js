@@ -4527,6 +4527,7 @@ fieldset:disabled .btn {
   /*box-shadow: 1px 1px 1px;*/
   box-shadow: 2px 4px 8px #585858;
   transform: scale(1.1);
+
   /*height: 200%;*/
 }
 
@@ -4543,7 +4544,7 @@ fieldset:disabled .btn {
   margin-bottom: 0;
 }
 
-.card p:hover {
+.card-text:hover {
   color: blue;
 }
 

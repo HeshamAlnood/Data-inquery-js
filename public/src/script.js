@@ -47,13 +47,7 @@ const chngBreadcrumb = function () {
   //brd.remove();
 
   let brdClass = 'class="breadcrumb-item active" aria-current=page';
-  /*console.log("Array");
-  console.log(BreadcrumbArr);
-  console.log(BreadcrumbArr.length);
-  console.log(`brd`);
-  console.log(brd);*/
-  /*console.log(brdChild);
-  console.log(brd.getElementsByTagName("li"));*/
+
   console.log(childsBrd);
 
   let arr = [...new Set(BreadcrumbArr)];
@@ -93,22 +87,56 @@ const navBreadcrumb = function (nav = "n") {
   let childsBrd = brd.querySelectorAll("li");
   console.log(`navBreadcrumb childsBrd`);
   console.log(childsBrd);
+  //childsBrd = childsBrd.querySelectorAll("a");
+  let brdLength = childsBrd.length;
+  console.log("brd length");
+  console.log(brdLength);
+
   childsBrd.forEach((el) => {
     console.log(`el`);
     console.log(el);
     el.addEventListener("click", (e) => {
       console.log("on click");
-      console.log(e.value);
+      console.log(el.textContent);
       e.preventDefault();
-      if (e.value === "Home") {
-        showHide(elmArray, "cards");
+
+      if (el.textContent === "Home" && brdLength > 1) {
         BreadcrumbArr.pop();
+        chngBreadcrumb();
+        showHide(elmArray, "cards");
       }
     });
   });
 };
 
 /*** END  Navigate Breadcrumb ***/
+
+/*** Alet Function  ***/
+const showAlert = function (msg, typ = "success") {
+  let vAlert = document.getElementById("login-alert");
+  let vAlertTxt = document.querySelector("#text-alert");
+  console.log(`vAlertTxt`);
+  console.log(vAlertTxt);
+  vAlertTxt.textContent = msg;
+  let classNam = `alert-${typ}`;
+
+  vAlert.classList.remove("login-alert");
+  vAlert.classList.add("is-show");
+  vAlertTxt.classList.remove(`alert-danger`);
+  vAlertTxt.classList.remove(`alert-success`);
+
+  vAlertTxt.classList.add(classNam);
+
+  setTimeout(() => {
+    let vAlert = document.getElementById("login-alert");
+    console.log(vAlert);
+    vAlert.classList.add("login-alert");
+    vAlert.classList.remove("is-show");
+    //vAlertBtn.click();
+  }, 2000);
+};
+
+/***End  Alet Function  ***/
 
 let vButton = document.querySelector("#loginButton");
 console.log(`vButton`);
@@ -122,50 +150,17 @@ vButton.addEventListener("click", (e) => {
   console.log(vPassword);
 */
   if (!vInputUser || !vPassword) {
-    /*alert("UserName Or Password is not Entered");
-    return;*/
-
-    Swal.fire({
-      icon: "error",
-      title: "Login Faild",
-      text: "UserName Or Password is not Entered!",
-      footer: "",
-    });
+    showAlert("UserName Or Password is not Entered!", "danger");
     return;
   }
 
   if (chkLogin(vInputUser, vPassword) === "true") {
-    //Swal.fire("Succeful Login");
-    let vAlert = document.getElementById("login-alert");
-    console.log(vAlert);
-    //vAlert.style.display = "flex";
-    //vAlert.classlist.add("login-alert.is-show");
-    vAlert.classList.remove("login-alert");
-    vAlert.classList.add("is-show");
-
-    console.log(vAlert);
-    setTimeout(() => {
-      let vAlertBtn = document.getElementById("alertSuccessBtn");
-      let vAlert = document.getElementById("login-alert");
-
-      console.log(vAlertBtn);
-      console.log(vAlert);
-      vAlert.classList.add("login-alert");
-      vAlert.classList.remove("is-show");
-      //vAlertBtn.click();
-    }, 2000);
+    showAlert("Succeful Login !", "success");
     showHide(elmArray, "cards");
     BreadcrumbArr.push("Home");
     chngBreadcrumb();
-
-    //alrt().then(showHide(elmArray, "cards"));
   } else {
-    Swal.fire({
-      icon: "error",
-      title: "Login Faild",
-      text: "UserName Or Password is Uncorrect!",
-      footer: "",
-    });
+    showAlert("UserName Or Password is Uncorrect!", "danger");
 
     return;
   }
