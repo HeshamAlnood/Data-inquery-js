@@ -53,16 +53,13 @@ app.get("/dbData", (rqs, rsp) => {
   runSql(inquery).then((resp) => {
     rslt = { ...resp };
     console.log(`rsp`);
-    //console.log(resp);
 
     rsp.send(resp);
-
-    //console.log(rsp[0]);
   });
+});
 
-  console.log(`rslt`);
-  console.log(rslt);
-  //rsp.send(`Obj : ${rslt}`);
+app.get("/dom", (rqs, rsp) => {
+  rsp.render(`dom`);
 });
 
 // creating WebServer

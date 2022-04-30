@@ -110,12 +110,12 @@ const runSql = async function (sql, binds = []) {
     });
 
     //oracledb.fetchAsString = [oracledb.String];
-    oracledb.fetchAsString = [oracledb.DATE /*, oracledb.NUMBER*/];
+    //oracledb.fetchAsString = [oracledb.DATE /*, oracledb.NUMBER*/];
 
     /*const nls_date_lang = await connection.execute(
       `ALTER SESSION SET NLS_DATE_LANGUAGE = 'ARABIC'`
     );*/
-    const nls_date_lang = await connection.execute(
+    /*const nls_date_lang = await connection.execute(
       `ALTER SESSION SET NLS_DATE_LANGUAGE  = 'AMERICAN'`
     );
     const nls = await connection.execute(
@@ -123,7 +123,7 @@ const runSql = async function (sql, binds = []) {
     );
     const nls_timeStamp = await connection.execute(
       `ALTER SESSION SET NLS_TIMESTAMP_FORMAT = 'YYYYMMDD'`
-    );
+    );*/
     //    oracledb.fetchAsString = [oracledb.DATE, oracledb.NUMBER];
 
     const result = await connection.execute(

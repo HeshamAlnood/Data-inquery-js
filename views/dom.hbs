@@ -1,0 +1,76 @@
+<html>
+    {{>head}}
+  <body>
+
+<div class="container">
+
+<div id="contrys">
+<ul><a> Saudi</a></ul>
+<ul><a> Yemeni</a></ul>
+<ul><a> Omani</a></ul>
+<ul><a> Kuwaity</a></ul>
+<ul><a> Hindi</a></ul>
+</div>
+<div style="display: inline;inline-size: 100px;">
+ <button id ='clearDom' class="w-100 btn btn-lg btn-primary"> Remove All Docs </button>
+  
+ <button id ='replaceDom' class="w-100 btn btn-lg btn-primary">Replace All Dom </button>
+
+ <button id ='addDom' class="w-100 btn btn-lg btn-primary">Add Dom </button>
+
+</div>
+
+
+
+
+
+
+
+    </div>
+
+<script>
+let vLi=document.querySelectorAll('ul');
+
+
+let butn=document.querySelector('#clearDom');
+let vAdd = document.querySelector('#addDom');
+let vCountrys=document.querySelector('#contrys');
+
+console.log(butn);
+
+console.log(vCountrys);
+
+const clrDom=()=>
+{
+  vLi=document.querySelectorAll('ul');
+
+console.log(vLi);
+vLi.forEach(e=>{
+e.remove();
+
+});
+
+
+};
+
+
+const addDom=(val)=>{
+
+console.log(vCountrys);
+vCountrys.insertAdjacentHTML ("beforeend",`<ul><a>${val}</a></ul>`);
+};
+
+
+butn.addEventListener('click',(b)=>{
+b.preventDefault();
+clrDom();});
+
+vAdd.addEventListener('click',(b)=>{
+b.preventDefault();
+addDom('Qatari');});
+
+
+</script>
+  </body>
+
+</html>

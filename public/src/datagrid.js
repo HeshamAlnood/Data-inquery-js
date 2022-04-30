@@ -14,8 +14,12 @@ const createTable = async function (data) {
       obC = {
         field: e.toLocaleUpperCase(),
         //format: e.toLocaleUpperCase().includes("DATE") ? "{0:DD/MM/YYYY}" : "",
-        type: e.toLocaleUpperCase().includes("DATE") ? "number" : "string",
+        type: e.toLocaleUpperCase().includes("DATE")
+          ? /*"number"*/ "date"
+          : "string",
         title: e.toLocaleUpperCase().replaceAll("_", " "),
+        format: e.toLocaleUpperCase().includes("DATE") ? "{0:dd/MM/yyyy}" : "",
+
         width: `150px`,
 
         attributes: {
@@ -31,7 +35,9 @@ const createTable = async function (data) {
       };
 
       fieldSchema[`"${e}"`] = {
-        type: e.toLocaleUpperCase().includes("DATE") ? "number" : "string",
+        type: e.toLocaleUpperCase().includes("DATE")
+          ? /*"number"*/ "date"
+          : "string",
         operators: {
           number: {
             gte: "Greater or equal to",
@@ -62,18 +68,31 @@ query.forEach((e) => {
     console.log(`fieldSchema`);
     console.log(fieldSchema);
     columnsP.length = 0;
+    document.querySelector("aside").classList.add("disabledbutton");
+    console.log("aside");
+    console.log(document.querySelector("aside"));
 
     //element.replaceChildren();
-    element.remove();
+    try {
+      element.remove();
+    } catch (error) {
+      console.log(`error`);
+      console.log(error);
+    }
 
     vArctile.insertAdjacentHTML(
       "afterbegin",
       `<div id="grid">
-      <div id="loading-parent" class="d-flex justify-content-center" >
-  <div id="loading" class="spinner-border text-primary" style="width:60px;height:60px;margin-top:400px;margin-left:800px;" role="status">
-    <span class="visually-hidden" >Loading...</span>
-  </div>
-</div>
+        <div id="loading-parent" class="d-flex justify-content-center">
+          <div
+            id="loading"
+            class="spinner-border text-primary"
+            style="width:60px;height:60px;margin-top:400px;margin-left:50px;"
+            role="status"
+          >
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
       </div>`
     );
 
@@ -95,12 +114,8 @@ query.forEach((e) => {
         document.getElementById("loading").style.opacity = "1";
         document.getElementById("grid").style.opacity = "0";
 
-        //console.log(`data`);
-        //console.log(dataV);
         dataV = data;
-        //console.log(data);
         createTable(data);
-        //return data;
 
         console.log(`dataV`);
         //console.log(dataV);
@@ -111,6 +126,11 @@ query.forEach((e) => {
               data: dataV,
               pageSize: 100,
             },
+            scrollable: {
+              //virtual: "columns",
+              endless: true,
+            },
+            navigatable: true,
 
             /* try schema */
             schema: {
@@ -121,20 +141,26 @@ query.forEach((e) => {
 
             /* end try schema */
             //  rowTemplate: kendo.template($("#template").html()),
-            height: 1100,
-            width: "200%",
+            height: "1110",
+            width: "99%",
+            noRecords: true,
 
-            groupable: true,
+            groupable: {
+              messages: {
+                empty: "Drag Coulumn to Group By",
+              },
+            },
             sortable: true,
             reorderable: true,
             resizable: true,
             columnMenu: true,
+            loaderType: "loadingPanel",
 
             //selectable: "multiple cell",
             //allowCopy: true,
             toolbar: ["excel", "pdf", "search"],
             excel: {
-              fileName: "Kendo UI Grid Export.xlsx",
+              fileName: "Grid.xlsx",
               proxyURL: "https://demos.telerik.com/kendo-ui/service/export",
               filterable: true,
             },
@@ -142,17 +168,18 @@ query.forEach((e) => {
               mode: "row",
               //ui: "datePicker",
             },
-            pageable: {
+            /*   pageable: {
               refresh: false,
               pageSizes: true,
               buttonCount: 5,
-            },
+            },*/
             columns: columnsP,
           });
         });
         document.getElementById("loading").style.opacity = "0";
         document.getElementById("grid").style.opacity = "1";
         document.getElementById("loading-parent").remove();
+        document.querySelector("aside").classList.remove("disabledbutton");
       })
       .catch((err) => console.log(err));
   });

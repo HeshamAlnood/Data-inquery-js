@@ -3,12 +3,10 @@ let vCards = document.getElementById("cards");
 let vMain = document.getElementById("main");
 
 let BreadcrumbArr = [];
-//vAsideArctile.style.display = "none";
 let elmArray = [vAsideArctile, vCards, vMain];
 console.log(vMain);
 
 console.log(elmArray);
-//vCards.style.display = "none";
 
 function showHide(arrayElm = [], p_elm) {
   arrayElm.forEach((e) => {
@@ -29,22 +27,9 @@ const chngBreadcrumb = function () {
 
   let childsBrd = brd.querySelectorAll(".li");
 
-  /*console.log(`brd`);
-  console.log(brd);
-  console.log(brd.hasChildNodes());*/
   while (brd.hasChildNodes()) {
     brd.removeChild(brd.firstChild);
   }
-  /*childsBrd.forEach((e) => {
-    console.log(`remove e`);
-    console.log(e);
-    e.remove();
-  });*/
-
-  /*console.log(`print after removing`);
-
-  console.log(brd);*/
-  //brd.remove();
 
   let brdClass = 'class="breadcrumb-item active" aria-current=page';
 
@@ -67,13 +52,21 @@ const chngBreadcrumb = function () {
         brdElm === undefined
           ? ""
           : brdElm + `<li href=#' ${brdClass}>${e}</li>`;
-      /*console.log("forEach");
-      console.log(brdElm);*/
     });
   }
 
-  /*console.log(`brdElm`);
-  console.log(brdElm);*/
+  //element.is ?? "" : element.remove();
+
+  try {
+    const element = document.getElementById("grid");
+    console.log(`element`);
+    console.log(element);
+    element.remove();
+  } catch (error) {
+    console.log(`error`);
+    console.log(error);
+  }
+
   brd.insertAdjacentHTML("beforeend", brdElm);
   navBreadcrumb();
 };
@@ -111,7 +104,7 @@ const navBreadcrumb = function (nav = "n") {
 
 /*** END  Navigate Breadcrumb ***/
 
-/*** Alet Function  ***/
+/*** Alret Function  ***/
 const showAlert = function (msg, typ = "success") {
   let vAlert = document.getElementById("login-alert");
   let vAlertTxt = document.querySelector("#text-alert");
@@ -186,6 +179,26 @@ vCardBuutons.forEach((e) => {
     let brdVal = e.previousElementSibling.previousElementSibling.textContent;
     BreadcrumbArr.push(brdVal);
     chngBreadcrumb();
+
+    try {
+      let vAlert = document.getElementById("login-alert");
+
+      vAlert.classList.add("login-alert");
+      vAlert.classList.remove("is-show");
+    } catch (error) {
+      console.log(error);
+    }
+    try {
+      const element = document.getElementById("grid");
+      console.log(`element remove gird`);
+      console.log(element);
+      element.remove();
+      console.log(document.getElementById("grid"));
+    } catch (error) {
+      console.log(`error`);
+      console.log(error);
+    }
+
     //nabBreadcrumb();
   });
   let vnam = e.previousElementSibling.previousElementSibling.textContent;
@@ -204,7 +217,7 @@ const cardAction = function () {
 
 var vPassword = document.getElementById("floatingPassword");
 
-vPassword.addEventListener("keyup", function (event) {
+vPassword.addEventListener("keypress", function (event) {
   var text = document.getElementById("text_caps");
   text.style.opacity = "0";
   if (event.getModifierState("CapsLock")) {
