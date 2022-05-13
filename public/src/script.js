@@ -217,7 +217,7 @@ const cardAction = function () {
 
 var vPassword = document.getElementById("floatingPassword");
 
-vPassword.addEventListener("keypress", function (event) {
+vPassword.addEventListener("keydown", function (event) {
   var text = document.getElementById("text_caps");
   text.style.opacity = "0";
   if (event.getModifierState("CapsLock")) {

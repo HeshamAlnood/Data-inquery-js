@@ -146,10 +146,4 @@ const runSql = async function (sql, binds = []) {
   }
 };
 
-/*runSql().then((rsp) => {
-  //console.log(rsp);
-  qResult = rsp;
-});*/
-console.log(`getQuery("ITEMS")`);
-console.log(getQuery("ITEMS"));
 module.exports = { runSql, getQuery };

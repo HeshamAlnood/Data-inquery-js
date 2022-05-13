@@ -1,11 +1,10 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 body {
-  height: 90vh;
   /*padding: 2rem;*/
 }
 
@@ -215,4 +214,67 @@ colgroup {
 #grid .k-virtual-scrollable-wrap table // A data table, with virtual scrolling.
 {
   min-width: 800px;
+}
+
+.login-form {
+  position: fixed;
+}
+
+.login-img {
+  /*grid-column: 1/2;
+  grid-row: 1/3;*/
+  height: 100%;
+  //max-height: 2000px;
+  overflow: hidden;
+  //z-index: 2;
+  position: relative;
+  //left: 50%;
+  //right: 50%;
+  top: 0;
+  //width: 50%;
+  opacity: 0.8;
+
+  //padding-top: 360px;
+
+  background-image: url("/img/login-background3.jpg");
+  //background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  position: relative;
+}
+
+.login-img2 {
+  /*grid-column: 1/2;
+  grid-row: 1/3;*/
+  //height: 100%;
+  overflow: hidden;
+  //z-index: 2;
+  position: relative;
+  //right: 50%;
+  left: 50%;
+  top: 0;
+  //width: 50%;
+  opacity: 0.8;
+  background-size: cover;
+
+  //padding-top: 360px;
+}
+
+.login-content {
+  /*grid-column: 2/4;
+  grid-row: 1/3;*/
+  left: 1400px;
+  //right: 1300px;
+  width: 30%;
+  margin-top: 150px;
+  height: 100%;
+  //transition: transform 1.2s ease-in-out;
+  padding: 50px 30px 0;
+  border-radius: 2%;
+  height: 500px;
+  position: fixed;
+  //box-shadow: 2px 4px 8px #585858;
+  opacity: 1;
+  background-color: white;
+  //background-image: url("img/login-background2.jpg");
 }
