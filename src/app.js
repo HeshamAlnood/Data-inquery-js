@@ -9,6 +9,7 @@ const { runSql, getQuery } = require("../src/querys.js");
 let pat1 = __dirname;
 let pat2 = __filename;
 
+const port = process.env.PORT || 3001;
 const path = require("path");
 
 let path3 = path.join(__dirname, "../public");
@@ -51,4 +52,4 @@ app.get("/dom", (rqs, rsp) => {
 });
 
 // creating WebServer
-app.listen(3001, () => console.log(`data Inquery Server is Up Running  `));
+app.listen(port, () => console.log(`data Inquery Server is Up Running  `));
