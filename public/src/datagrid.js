@@ -190,12 +190,12 @@ query.forEach((e) => {
             Discontinued: false,
           },
         ];
-        dataV = "";
-        dataV = products;
+        /*dataV = "";
+        dataV = products;*/
 
         //createTable(dataV);
         /* end*/
-        //        createTable(data);
+        createTable(data);
 
         console.log(`dataV`);
         console.log(dataV);
