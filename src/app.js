@@ -52,4 +52,6 @@ app.get("/dom", (rqs, rsp) => {
 });
 
 // creating WebServer
-app.listen(port, () => console.log(`data Inquery Server is Up Running  `));
+app.listen(port, () =>
+  console.log(`data Inquery Server is Up Running  on Port ${port}`)
+);
