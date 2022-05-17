@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node src/app.js"
+    "dev": "data-inquery start",
+    "start": "serve -s build",
+    "build": "data-inquery build",
+    "test": "data-inquery test --env=jsdom",
+    "eject": "data-inquery eject",
+    "heroku-postbuild": "npm run build"
   },
   "keywords": [],
   "author": "",
