@@ -4,8 +4,7 @@ const app = express();
 
 const hbs = require("hbs");
 
-//const { runSql, getQuery } = require("./querys");
-const { runSql, getQuery } = require("../src/querys.js");
+//const { runSql, getQuery } = require("../src/querys.js");
 let pat1 = __dirname;
 let pat2 = __filename;
 
@@ -36,15 +35,15 @@ app.get("/dbData", (rqs, rsp) => {
   //const { getQuery } = require("./querys");
   let rslt;
 
-  let inquery = getQuery(rqs.query.inquery);
-  console.log(getQuery);
+  /*let inquery = getQuery(rqs.query.inquery);
+  console.log(getQuery);*/
 
-  runSql(inquery).then((resp) => {
+  /*runSql(inquery).then((resp) => {
     rslt = { ...resp };
     console.log(`rsp`);
 
     rsp.send(resp);
-  });
+  });*/
 });
 
 app.get("/dom", (rqs, rsp) => {
