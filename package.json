@@ -6,12 +6,7 @@
     "node": "14.17.3"
   },
   "scripts": {
-    "dev": "data-inquery start",
-    "start": "serve -s build",
-    "build": "data-inquery build",
-    "test": "data-inquery test --env=jsdom",
-    "eject": "data-inquery eject",
-    "heroku-postbuild": "npm run build"
+    "start": "node src/app.js"
   },
   "keywords": [],
   "author": "",
