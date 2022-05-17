@@ -25,5 +25,13 @@
   "devDependencies": {
     "tailwindcss": "^3.0.24"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HeshamAlnood/Data-inquery.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HeshamAlnood/Data-inquery/issues"
+  },
+  "homepage": "https://github.com/HeshamAlnood/Data-inquery#readme",
   "description": ""
 }
