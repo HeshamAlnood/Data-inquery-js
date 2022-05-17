@@ -26,7 +26,7 @@ app.get("", (req, rsp) => {
 });
 
 app.get("/dbData", (rqs, rsp) => {
-  //rsp.send(`The path you Requested is not available !`);
+  rsp.send(`The path you Requested is not available !`);
   if (!rqs.query.inquery || rqs.query.inquery === undefined) {
     return;
   }

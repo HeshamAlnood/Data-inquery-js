@@ -1,10 +1,11 @@
 let vAsideArctile = document.getElementById("show_aside_artcile");
-let vCards = document.getElementById("cards");
+//let vCards = document.getElementById("cards");
 let vMain = document.getElementById("main");
 
 let BreadcrumbArr = [];
-let elmArray = [vAsideArctile, vCards, vMain];
+let elmArray = [vAsideArctile, vMain];
 console.log(vMain);
+console.log(vAsideArctile);
 
 console.log(elmArray);
 
@@ -149,7 +150,9 @@ vButton.addEventListener("click", (e) => {
 
   if (chkLogin(vInputUser, vPassword) === "true") {
     showAlert("Succeful Login !", "success");
-    showHide(elmArray, "cards");
+    //showHide(elmArray, "cards");
+    showHide(elmArray, "show_aside_artcile");
+
     BreadcrumbArr.push("Home");
     chngBreadcrumb();
   } else {
@@ -192,7 +195,7 @@ vCardBuutons.forEach((e) => {
       const element = document.getElementById("grid");
       console.log(`element remove gird`);
       console.log(element);
-      element.remove();
+      //element.remove();
       console.log(document.getElementById("grid"));
     } catch (error) {
       console.log(`error`);

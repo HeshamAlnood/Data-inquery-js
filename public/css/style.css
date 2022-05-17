@@ -278,3 +278,22 @@ colgroup {
   background-color: white;
   //background-image: url("img/login-background2.jpg");
 }
+
+.cards-rows {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  align-content: space-around;
+  //justifiy-conter: center;
+  margin-top: 100px;
+  //align-item: center;
+  //width: 100%;
+  gap: row-gap;
+  row-gap: 1px;
+
+  //height: 800px;
+}
+
+.cards-rows-childs {
+}
+d

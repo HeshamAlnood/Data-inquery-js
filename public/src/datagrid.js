@@ -62,6 +62,7 @@ query.forEach((e) => {
   e.addEventListener("click", () => {
     console.log(e.textContent);
     let vlink = `http://localhost:3001/dbData?inquery=${e.textContent}`;
+    vlink = `https://covid-api.mmediagroup.fr/v1/cases?country=Yemen`;
     console.log(vlink);
     dataV = "";
     const element = document.getElementById("grid");
@@ -116,6 +117,7 @@ query.forEach((e) => {
 
         dataV = data;
         /* for testing data*/
+
         var products = [
           {
             ProductID: 1,
@@ -190,12 +192,13 @@ query.forEach((e) => {
             Discontinued: false,
           },
         ];
-        /*dataV = "";
-        dataV = products;*/
+        dataV = "";
 
-        //createTable(dataV);
+        dataV = products;
+
+        //createTable(products);
         /* end*/
-        createTable(data);
+        //createTable(data);
 
         console.log(`dataV`);
         console.log(dataV);
