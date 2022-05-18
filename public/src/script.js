@@ -48,7 +48,7 @@ const chngBreadcrumb = function () {
         arr[i] === e
           ? 'class="breadcrumb-item active" aria-current=page'
           : 'class="breadcrumb-item" ';
-      //brdCls.classList.remove("active");
+      brdCls.classList.remove("active");
       brdElm =
         brdElm === undefined
           ? ""
