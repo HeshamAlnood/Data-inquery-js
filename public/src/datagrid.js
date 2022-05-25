@@ -54,14 +54,34 @@ const createTable = async function (data) {
   createSearchAndCols(dataV);
 };
 
-let query = document.querySelector("aside").querySelectorAll("a");
+let query = document.querySelector("aside");
+query = document.querySelectorAll(".nav-link");
+//query = document.getElementsByClassName("nav-link");
+console.log(`query`);
+console.log(query);
+
+query.forEach((e) => console.log(e.textContent.replace(/\s/g, "")));
+console.log(query[0]);
 
 query.forEach((e) => {
   let vArctile = document.querySelector("article");
-
+  console.log(`vArctile`);
+  console.log(vArctile);
   e.addEventListener("click", () => {
+    console.log(`e click ${e.textContent}`);
+    console.log(e);
+    //if (e.textContent.replace(/\s/g, "") === "DashBoard")
+    console.log(`has childern ? ${e.tagName}`);
+    console.log(`  childNodes length ? ${e.childNodes.length}`);
+    if (e.childNodes.length > 1) {
+      console.log(`stop the ${e.textContent}`);
+      return;
+    }
     console.log(e.textContent);
-    let vlink = `http://localhost:3001/dbData?inquery=${e.textContent}`;
+    let vlink = `http://localhost:3001/dbData?inquery=${e.textContent.replace(
+      /\s/g,
+      ""
+    )}`;
     vlink = `https://covid-api.mmediagroup.fr/v1/cases?country=Yemen`;
     console.log(vlink);
     dataV = "";
@@ -82,8 +102,8 @@ query.forEach((e) => {
     }
 
     vArctile.insertAdjacentHTML(
-      "afterbegin",
-      `<div id="grid">
+      "beforeend",
+      `<div id="grid"  >
         <div id="loading-parent" class="d-flex justify-content-center">
           <div
             id="loading"
@@ -192,13 +212,15 @@ query.forEach((e) => {
             Discontinued: false,
           },
         ];
+        dataV.length = 0;
         dataV = "";
 
         dataV = products;
+        products = "";
 
-        //createTable(products);
+        //       createTable(products);
         /* end*/
-        //createTable(data);
+        //createTable(dataV);
 
         console.log(`dataV`);
         console.log(dataV);

@@ -3,29 +3,37 @@
 
    
 <body>
+
+
  
 {{>login}}
-<div class="position-relative">
-<!--div>{{>header}}</div!-->  
-{{>breadcrumb}}
+<!--div class="position-relative"!-->
+{{>header}}
+
+<!--div>{{>breadcrumb}}</div!-->  
 
 
- <div class="position-absolute" style="padding-top:20px;padding-left:0 ;float:left;width:100%;display:none;height: 100%;" id="show_aside_artcile">
+<div class="page-content"   >
+  {{>aside}}  
+  <div class="content-wrapper">
+
+{{>navbar}}
+<div class="content">
+
+{{>article}}
+</div>
+</div>
+
+ <!--div class="position-absolute" style="padding-top:20px;padding-left:0 ;float:left;width:100%;display:none;height: 100%;" id="show_aside_artcile">
    
-{{>aside}}  
+ 
    
   
-{{>article}}
-
+ 
 
  
- </div>
-<div id="login-alert" class="login-alert"  style="margin-top:23%;top: 600px;position: fixed;">
-      <div id="text-alert" class="alert alert-success" role="alert" style="width: 600px;">
-        Succeful Login !
-       </div>
-    </div>
-     </div>
+ </div!-->
+ 
 
 
 
@@ -47,15 +55,50 @@
     
 
  
-              <script defer src="/src/script.js"></script>
 
-      
+      <!-- for tmeplate-->
+
+      <!-- Core JS files -->
+
+  <script src="/src/main/jquery.min.js"></script>
+  <script
+    src="/src/main/bootstrap.bundle.min.js"
+  ></script>
+  <script
+    src="/src/plugins/loaders/blockui.min.js"
+  ></script>
+  <script src="/src/plugins/ui/ripple.min.js"></script>
+  <!-- /core JS files -->
+
+  <!-- Theme JS files -->
+  <script src="/src/assets/app.js"></script>
+  <!-- /theme JS files -->
+
+   
+    
+    <!--script defer src="/src/custom.js"></script!-->
+    <!-- for DataGrid -->
+     <script  defer
+    src="https://kendo.cdn.telerik.com/2022.1.301/js/jquery.min.js" 
+  ></script>
+  <script defer
+    src="https://kendo.cdn.telerik.com/2022.1.301/js/kendo.all.min.js"
+  ></script>
+  <script   defer
+    src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js"
+  ></script>
+
+<script   defer
+    src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"
+  ></script>
+
+                <script defer src="/src/script.js"></script>
 
 
 
    
      
-   
+   </div>
     </body>
 
       
