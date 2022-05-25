@@ -299,10 +299,14 @@ const updateUserName = (e) => {
   let userMenu1 = document.getElementById("welcomUser1");
   let userMenu2 = document.getElementById("welcomUser2");
   let userLoggedDate = document.getElementById("welcomDate");
+  let vAsideUserName = document.getElementById("asideUserName");
+  let vAsideLocation = document.getElementById("asideLocation");
 
   console.log(`userMenu1`);
   console.log(userMenu1);
   let sysdate = new Date();
+  vAsideUserName.textContent = e;
+  vAsideLocation.textContent = "KSA-Dammam";
 
   userMenu1.textContent = `Morning ${e}`;
   userMenu2.textContent = `Welcom ${e}`;
