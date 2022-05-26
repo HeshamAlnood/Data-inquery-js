@@ -297,8 +297,8 @@ const navBreadcrumb = function (nav = "n") {
 
 const updateUserName = (e) => {
   let userMenu1 = document.getElementById("welcomUser1");
-  let userMenu2 = document.getElementById("welcomUser2");
-  let userLoggedDate = document.getElementById("welcomDate");
+
+  //let userLoggedDate = document.getElementById("welcomDate");
   let vAsideUserName = document.getElementById("asideUserName");
   let vAsideLocation = document.getElementById("asideLocation");
 
@@ -309,14 +309,13 @@ const updateUserName = (e) => {
   vAsideLocation.textContent = "KSA-Dammam";
 
   userMenu1.textContent = `Morning ${e}`;
-  userMenu2.textContent = `Welcom ${e}`;
-  userLoggedDate.textContent = `Logged at :   ${dateFormat(
+  /*userLoggedDate.textContent = `Logged at :   ${dateFormat(
     sysdate,
     "dd/MM/yyyy"
   )} ${sysdate.getHours().toString().padStart(2, "0")}:${sysdate
     .getMinutes()
     .toString()
-    .padStart(2, "0")}:${sysdate.getSeconds().toString().padStart(2, "0")}`;
+    .padStart(2, "0")}:${sysdate.getSeconds().toString().padStart(2, "0")}`;*/
 };
 
 /*  */

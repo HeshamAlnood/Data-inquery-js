@@ -4,6 +4,7 @@ let columnsP = [];
 let dataV;
 let fieldSchema = {};
 
+let sideBarElementHightlight;
 const createTable = async function (data) {
   const createSearchAndCols = function (data) {
     let obC = {};
@@ -63,13 +64,28 @@ console.log(query);
 query.forEach((e) => console.log(e.textContent.replace(/\s/g, "")));
 console.log(query[0]);
 
+const highlightElm = (elm) => {
+  sideBarElementHightlight = elm;
+  query.forEach((e) => {
+    if (elm === e.textContent) {
+      e.style.backgroundColor = "#eeeded";
+    } else {
+      e.style.backgroundColor = "";
+    }
+  });
+};
+
 query.forEach((e) => {
   let vArctile = document.querySelector("article");
   console.log(`vArctile`);
   console.log(vArctile);
+  e.style.backgroundColor = "";
   e.addEventListener("click", () => {
     console.log(`e click ${e.textContent}`);
     console.log(e);
+    e.style.backgroundColor = "transparent";
+    highlightElm(e.textContent);
+
     //if (e.textContent.replace(/\s/g, "") === "DashBoard")
     console.log(`has childern ? ${e.tagName}`);
     console.log(`  childNodes length ? ${e.childNodes.length}`);
